@@ -1,28 +1,36 @@
+import "./styles.css";
 import { useState } from "react";
 
-const useInput = (initialValue, validator) => {
-    const [value, setValue] = useState(initialValue);
-    const onChange = (event) => {
-        const {
-            target: { value },
-        } = event;
-        let willUpdate = true;
-        if (typeof validator === "function") {
-            willUpdate = validator(value);
-        }
-        if (willUpdate) {
-            setValue(value);
-        }
-    };
-    return { value, onChange }; //{value:value, onchange: onChange}
+const content = [
+    {
+        tab: "Section 1",
+        content: "I'm the content of the Section 1",
+    },
+    {
+        tab: "Section 2",
+        content: "I'm the content of the Section 2",
+    },
+];
+
+const useTabs = (initialTabs, allTabs) => {
+    const [currentIndex, setCurrentIndex] = useState(initialTabs);
+
+    if (!allTabs || !Array.isArray(allTabs)) {
+        return;
+    }
+
+    return { currentItem: allTabs[currentIndex], changeItem: setCurrentIndex };
 };
-export default function App() {
-    const maxLeng = (value) => value.length <= 10;
-    const name = useInput("Mr.", maxLeng);
+export default function useTabsApp() {
+    const { currentItem, changeItem } = useTabs(0, content);
     return (
-        <div className="App">
-            <h1>Hello CodeSandbox</h1>
-            <input placeholder="Name" {...name} />
+        <div>
+            {content.map((section, index) => (
+                <button key={index} onClick={() => changeItem(index)}>
+                    {section.tab}
+                </button>
+            ))}
+            <div>{currentItem.content}</div>
         </div>
     );
 }
