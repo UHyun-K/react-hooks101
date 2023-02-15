@@ -1,0 +1,25 @@
+{
+  "name": "@web-react-hooks/use-confirm",
+  "version": "1.0.3",
+  "description": "React Hook to ask the user for a confirmation before executing a function.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UHyun-K/react-hooks101.git"
+  },
+  "keywords": [
+    "react",
+    "hooks",
+    "confirm",
+    "useconfirm"
+  ],
+  "author": "UHyun-k",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UHyun-K/react-hooks101/issues"
+  },
+  "homepage": "https://github.com/UHyun-K/react-hooks101#readme"
+}
